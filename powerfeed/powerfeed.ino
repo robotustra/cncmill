@@ -14,6 +14,8 @@ int PIN_ENC_A = 2;
 int PIN_INT 	= 1; // interrupt pin for arduino Leonardo 32u4
 int PIN_ENC_B = 3;
 
+int PIN_MODE = 5; // input mode, direction 
+
 int PIN_PULS = 13;
 int PIN_DIR = 12;
 
@@ -33,6 +35,7 @@ void setup() {
 	
   	pinMode(PIN_ENC_A, INPUT_PULLUP);
   	pinMode(PIN_ENC_B, INPUT_PULLUP);
+    pinMode(PIN_MODE,  INPUT_PULLUP);
 
 
   	attachInterrupt(PIN_INT, doEncoder, CHANGE);
@@ -65,6 +68,8 @@ void loop ()
 	 
 	    lastPos = pos;
   	}
+
+   
 
 }
 
