@@ -2,6 +2,9 @@
 	Power drive test.
 	Pin 2 - input encoder channel A,
 	Pin 3 - input encoder channel B
+	Pin 5 - Mode of operation HIGH = continuous mode LOW = step mode
+	Pin 13 - Step
+	Pin 12 - Direction
 
 	Encoder interrupt pin = 2;
 
