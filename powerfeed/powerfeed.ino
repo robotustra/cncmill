@@ -25,6 +25,7 @@ volatile unsigned long debounceLast = 0;
 volatile int pos = 0;
 int lastPos = 0;
 int pos_diff = 0;
+int i;
 
 volatile int mode = 0;
 int speed = 0; // speed of turning ()
@@ -49,7 +50,7 @@ void setup() {
   	digitalWrite(PIN_DIR, HIGH);
   	digitalWrite(PIN_PULS, HIGH);
 
-  
+    speed = 0;
 } 
 
 
@@ -60,10 +61,11 @@ void loop ()
   	if (mode)
   	{
   		//continuous mode on the base of speed value
-  		if (pos != lastPos) 
+  	if (pos != lastPos) 
 		{
 			pos_diff = lastPos - pos;
 			speed += pos_diff;
+      lastPos = pos;
 		}
 
 		if (speed > 0 )
@@ -75,8 +77,12 @@ void loop ()
 			digitalWrite (PIN_DIR, LOW);
 		}
 
-		delay(10);
-		doStep();
+    if (speed !=0){
+  		for (i=0; i<1; i++){
+        delayMicroseconds(1000-3*abs(speed));
+  		  doStep();
+      }
+    }
 
   	}
   	else
